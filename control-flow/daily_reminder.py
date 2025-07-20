@@ -1,19 +1,29 @@
-def provide_reminder(task_name, priority, time_sensitive):
+def provide_reminder(task, priority, time_bound):
     """
-    Prints a customized reminder based on task details.
+    Prints a customized reminder based on user input.
 
     Parameters:
-    - task_name (str): The name of the task.
-    - priority (str): The priority level (e.g., 'High', 'Medium', 'Low').
-    - time_sensitive (bool): Whether the task requires immediate attention.
+    - task (str): The name of the task
+    - priority (str): Task priority level (High, Medium, Low)
+    - time_bound (str): 'yes' if task is time-sensitive, otherwise 'no'
     """
-    if time_sensitive:
-        urgency = "This task requires immediate attention!"
-    else:
-        urgency = "This task can be scheduled later."
+    urgent_message = "This task requires immediate attention!" if time_bound.lower() == 'yes' else "This task can be done later."
 
-    print(f"Reminder: You need to complete '{task_name}'. Priority: {priority}. {urgency}")
+    match priority.lower():
+        case 'high':
+            print(f"Reminder: High priority task '{task}'. {urgent_message}")
+        case 'medium':
+            print(f"Reminder: Medium priority task '{task}'. {urgent_message}")
+        case 'low':
+            print(f"Reminder: Low priority task '{task}'. {urgent_message}")
+        case _:
+            print(f"Reminder: Task '{task}' with unknown priority. {urgent_message}")
 
 
-# Example usage
-provide_reminder("Submit assignment", "High", True)
+# --- User prompts ---
+task = input("Enter your task: ")
+time_bound = input("Is the task time-bound? (yes/no): ")
+priority = input("Enter priority level (High, Medium, Low): ")
+
+# Call the function
+provide_reminder(task, priority, time_bound)
