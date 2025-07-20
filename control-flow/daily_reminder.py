@@ -1,29 +1,33 @@
-def provide_reminder(task, priority, time_bound):
-    """
-    Prints a customized reminder based on user input.
+# daily_reminder.py
 
-    Parameters:
-    - task (str): The name of the task
-    - priority (str): Task priority level (High, Medium, Low)
-    - time_bound (str): 'yes' if task is time-sensitive, otherwise 'no'
-    """
-    urgent_message = "This task requires immediate attention!" if time_bound.lower() == 'yes' else "This task can be done later."
-
-    match priority.lower():
-        case 'high':
-            print(f"Reminder: High priority task '{task}'. {urgent_message}")
-        case 'medium':
-            print(f"Reminder: Medium priority task '{task}'. {urgent_message}")
-        case 'low':
-            print(f"Reminder: Low priority task '{task}'. {urgent_message}")
-        case _:
-            print(f"Reminder: Task '{task}' with unknown priority. {urgent_message}")
-
-
-# --- User prompts ---
+# Prompt for task
 task = input("Enter your task: ")
-time_bound = input("Is the task time-bound? (yes/no): ")
-priority = input("Enter priority level (High, Medium, Low): ")
 
-# Call the function
-provide_reminder(task, priority, time_bound)
+# Prompt for priority level
+priority = input("Priority (high/medium/low): ")
+
+# Prompt for time-bound status
+time_bound = input("Is it time-bound? (yes/no): ")
+
+# Process using match-case (Python 3.10+)
+match priority.lower():
+    case "high":
+        message = f"Reminder: '{task}' is a high priority task"
+    case "medium":
+        message = f"Reminder: '{task}' is a medium priority task"
+    case "low":
+        message = f"Note: '{task}' is a low priority task"
+    case _:
+        message = f"'{task}' has an unknown priority level"
+
+# Use if statement to adjust message if task is time-bound
+if time_bound.lower() == "yes":
+    message += " that requires immediate attention today!"
+else:
+    if priority.lower() == "low":
+        message += ". Consider completing it when you have free time."
+    else:
+        message += "."
+
+# Print the customized reminder
+print(message)
