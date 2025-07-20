@@ -1,25 +1,19 @@
-# daily_reminder.py
+def provide_reminder(task_name, priority, time_sensitive):
+    """
+    Prints a customized reminder based on task details.
 
-task = input("Enter your task: ")
-priority = input("Priority (high/medium/low): ").strip().lower()
-time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
-
-match priority:
-    case "high":
-        message = f"Reminder: '{task}' is a high priority task"
-    case "medium":
-        message = f"Reminder: '{task}' is a medium priority task"
-    case "low":
-        message = f"Note: '{task}' is a low priority task"
-    case _:
-        message = f"Note: '{task}' has an undefined priority level"
-
-if time_bound == "yes":
-    message += " that requires immediate attention today!"
-else:
-    if "Reminder" in message:
-        message += ". Try to complete it soon."
+    Parameters:
+    - task_name (str): The name of the task.
+    - priority (str): The priority level (e.g., 'High', 'Medium', 'Low').
+    - time_sensitive (bool): Whether the task requires immediate attention.
+    """
+    if time_sensitive:
+        urgency = "This task requires immediate attention!"
     else:
-        message += ". Consider completing it when you have free time."
+        urgency = "This task can be scheduled later."
 
-print("\n" + message)
+    print(f"Reminder: You need to complete '{task_name}'. Priority: {priority}. {urgency}")
+
+
+# Example usage
+provide_reminder("Submit assignment", "High", True)
