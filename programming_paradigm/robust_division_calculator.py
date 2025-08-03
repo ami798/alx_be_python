@@ -1,3 +1,5 @@
+# robust_division_calculator.py
+
 def safe_divide(numerator, denominator):
     try:
         num = float(numerator)
@@ -8,4 +10,4 @@ def safe_divide(numerator, denominator):
         result = num / den
     except ZeroDivisionError:
         return "Error: Cannot divide by zero."
-    return f"The result of the division is {result}."
+    return f"The result of the division is {result}"
