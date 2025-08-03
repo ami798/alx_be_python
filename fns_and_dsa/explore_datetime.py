@@ -1,3 +1,5 @@
+# explore_datetime.py
+
 from datetime import datetime, timedelta
 
 def display_current_datetime():
@@ -7,9 +9,9 @@ def display_current_datetime():
 
 def calculate_future_date(days_to_add: int):
     now = datetime.now()
-    future = now + timedelta(days=days_to_add)
-    future_date = future.strftime("%Y-%m-%d")
-    print(f"Future date: {future_date}")
+    future_date = now + timedelta(days=days_to_add)
+    future_date_str = future_date.strftime("%Y-%m-%d")
+    print(f"Future date: {future_date_str}")
 
 def main():
     display_current_datetime()

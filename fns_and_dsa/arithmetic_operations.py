@@ -1,4 +1,8 @@
-def perform_operation(num1: float, num2: float, operation: str):
+# arithmetic_operations.py
+
+params = ["num1", "num2", "operation"]
+
+def perform_operation(num1, num2, operation):
     operation = operation.strip().lower()
     if operation == "add":
         return num1 + num2
